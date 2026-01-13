@@ -1,17 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Kaleidoscope</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mobile Kaleidoscope</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <canvas id="kaleidoscope"></canvas>
-
-  <!-- Sensor permission button (required on modern Android / iOS) -->
-  <button id="sensorBtn">Enable Motion</button>
-
-  <script src="kaleidoscope.js"></script>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-cube"></i> Kaleidoscope</h1>
+            <p class="subtitle">Move your device or mouse to interact</p>
+        </header>
+        
+        <main>
+            <div class="canvas-container">
+                <canvas id="kaleidoscopeCanvas"></canvas>
+                <div class="instructions">
+                    <div class="instruction mobile-instruction">
+                        <i class="fas fa-mobile-alt"></i>
+                        <p>Tilt your device to move the shapes</p>
+                    </div>
+                    <div class="instruction desktop-instruction">
+                        <i class="fas fa-mouse-pointer"></i>
+                        <p>Move mouse to control shapes on desktop</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <div class="control-group">
+                    <label for="shapeCount">Shape Density</label>
+                    <input type="range" id="shapeCount" min="10" max="100" value="40">
+                    <span id="shapeCountValue">40</span>
+                </div>
+                
+                <div class="control-group">
+                    <label for="sensitivity">Motion Sensitivity</label>
+                    <input type="range" id="sensitivity" min="1" max="10" value="5">
+                    <span id="sensitivityValue">5</span>
+                </div>
+                
+                <div class="control-group">
+                    <label for="symmetry">Symmetry</label>
+                    <select id="symmetry">
+                        <option value="6">6-fold</option>
+                        <option value="8" selected>8-fold</option>
+                        <option value="10">10-fold</option>
+                        <option value="12">12-fold</option>
+                    </select>
+                </div>
+                
+                <button id="randomizeBtn">
+                    <i class="fas fa-random"></i> Randomize Colors
+                </button>
+            </div>
+            
+            <div class="sensor-info">
+                <div class="sensor-data">
+                    <div class="data-item">
+                        <span class="data-label">X-axis:</span>
+                        <span id="xValue" class="data-value">0.00</span>
+                    </div>
+                    <div class="data-item">
+                        <span class="data-label">Y-axis:</span>
+                        <span id="yValue" class="data-value">0.00</span>
+                    </div>
+                    <div class="data-item">
+                        <span class="data-label">Z-axis:</span>
+                        <span id="zValue" class="data-value">0.00</span>
+                    </div>
+                    <div class="data-item">
+                        <span class="data-label">Mode:</span>
+                        <span id="modeIndicator" class="data-value">Device Motion</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>Geometric Kaleidoscope | Works on mobile and desktop</p>
+        </footer>
+    </div>
+    
+    <script src="script.js"></script>
 </body>
 </html>
